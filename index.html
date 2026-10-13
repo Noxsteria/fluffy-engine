@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graphic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <span class="nav-name">Sarut Hompharad</span>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+      <button class="dark-toggle" id="toggleBtn">dark</button>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-status">// web dev @ rmutt</p>
+    <h1>Hi, I'm Sarut.<br>I build things.</h1>
+    <p>This is my personal portfolio, feel free to check it out.</p>
+    <div class="hero-links">
+      <a href="https://github.com/Noxsteria" target="_blank">github →</a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <p class="section-title reveal">projects</p>
+
+    <a href="#" class="project reveal">
+      <div>
+        <div class="project-name">Kiri AI</div>
+        <p class="project-desc">A realtime desktop personal assistance using artificial intelligence.</p>
+      </div>
+      <div class="project-stack">Python</div>
+    </a>
+
+    <a href="#" class="project reveal">
+      <div>
+        <div class="project-name">Skill Checker</div>
+        <p class="project-desc">A python script that detect press certain skill checker.</p>
+      </div>
+      <div class="project-stack">Python</div>
+    </a>
+
+    <a href="#" class="project reveal">
+      <div>
+        <div class="project-name">Annex Player</div>
+        <p class="project-desc">A discord music playing bot that use discord api.</p>
+      </div>
+      <div class="project-stack">Python</div>
+    </a>
+
+  </section>
+
+  <section id="skills">
+    <p class="section-title reveal">skills</p>
+    <div class="skills-list reveal">
+      <div class="skill-row">
+        <span class="skill-row-label">languages</span>
+        <span class="skill-row-items">Python, Java, C, SQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-row-label">frontend</span>
+        <span class="skill-row-items">React, HTML/CSS, Next.js</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-row-label">backend</span>
+        <span class="skill-row-items">Node.js, PostgreSQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-row-label">tools</span>
+        <span class="skill-row-items">Git, Figma</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <p class="section-title reveal">about</p>
+    <p class="reveal">I'm a uni student who like coding</p>
+    <p class="reveal">When I'm not coding I'm probably reading, or aggressively overcomplicating my desk setup.</p>
+  </section>
+
+  <section id="contact">
+    <p class="section-title reveal">contact</p>
+    <p class="contact-text reveal">I'm always happy to chat about projects or anything interesting. My inbox is open.</p>
+    <a class="contact-email reveal" href="mailto:saruthompharad@gmail.com">saruthompharad@gmail.com</a>
+  </section>
+
+  <footer>
+    <span>© 2026 Sarut Hompharad</span>
+    <div class="footer-links">
+      <a href="#">github</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // dark mode toggle
+  const btn = document.getElementById('toggleBtn');
+  const body = document.body;
+
+  // respect system preference on load
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    body.classList.add('dark');
+    btn.textContent = 'light';
+  }
+
+  btn.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    btn.textContent = body.classList.contains('dark') ? 'light' : 'dark';
+  });
+
+  // scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
